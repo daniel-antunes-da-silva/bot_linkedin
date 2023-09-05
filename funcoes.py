@@ -3,14 +3,15 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
 from time import sleep
-from random import randint
+from random import randint, uniform
 
 
 def iniciar_driver():
     chrome_options = Options()
     # chrome_options.binary_location = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
     arguments = ['--lang=pt-BR', 'window-size=1300,1000',
-                 '--user-data-dir=C:\\Users\\Daniel\\AppData\\Local\\Google\\Chrome\\User Data']
+                 '--user-data-dir=C:\\Users\\Daniel\\AppData\\Local\\Google\\Chrome\\User Data',
+                 '--headless']
     for argument in arguments:
         chrome_options.add_argument(argument)
 
@@ -38,3 +39,7 @@ def digitar_devagar(campo, msg):
     for letra in msg:
         sleep(randint(1, 5)/30)
         campo.send_keys(letra)
+
+
+def espera_aleatoria(inicio=2.5, fim=6.5):
+    sleep(uniform(inicio, fim))
