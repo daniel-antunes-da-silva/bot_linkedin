@@ -1,1 +1,0 @@
-Foi necessário criar uma função para leitura de arquivos .txt, guardando em uma variável para posterior utilização.
