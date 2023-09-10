@@ -10,7 +10,7 @@ def iniciar_driver():
     chrome_options = Options()
     # chrome_options.binary_location = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
     arguments = ['--lang=pt-BR', 'window-size=1300,1000',
-                 '--user-data-dir=C:\\Users\\Daniel\\AppData\\Local\\Google\\Chrome\\User Data',
+                 '--user-data-dir=C:\\Users\\Daniel\\AppData\\Local\\Google\\Chrome\\User Data'
                  '--headless']
     for argument in arguments:
         chrome_options.add_argument(argument)
@@ -58,18 +58,6 @@ def ler_txt(nome_arquivo):
         return texto
 
 
-def selecionar_arquivo(tipos_de_arquivos='Todos os tipos', extensoes_de_arquivo=('*.*',)):
-    import tkinter as tk
-    from tkinter import filedialog
-
-    caminho_do_arquivo = tk.filedialog.askopenfilenames(
-        title=f'Selecione {tipos_de_arquivos.lower()}',
-        filetypes=((tipos_de_arquivos, extensoes_de_arquivo),)
-    )
-    return caminho_do_arquivo
-
-
 if __name__ == '__main__':
     txt = ler_txt(nome_arquivo='texto_a_publicar.txt')
     print(txt)
-    selecionar_arquivo('Arquivos de texto', extensoes_de_arquivo=('*.txt', '*.png'))
