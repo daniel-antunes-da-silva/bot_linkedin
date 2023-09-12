@@ -3,15 +3,16 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
 from time import sleep
-from random import randint, uniform
+from random import uniform
+import os
 
 
 def iniciar_driver():
     chrome_options = Options()
-    # chrome_options.binary_location = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+    # pega o diretório independente do nome de usuário.
+    user_data_dir = os.path.join(os.environ['LOCALAPPDATA'], 'Google', 'Chrome', 'User Data')
     arguments = ['--lang=pt-BR', 'window-size=1300,1000',
-                 '--user-data-dir=C:\\Users\\Daniel\\AppData\\Local\\Google\\Chrome\\User Data',
-                 '--headless']
+                 f'--user-data-dir={user_data_dir}', '--headless=new']
     for argument in arguments:
         chrome_options.add_argument(argument)
 

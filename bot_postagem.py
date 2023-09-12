@@ -89,10 +89,6 @@ else:
                     print('Ocorreu algum problema na publicação do post.')
                 else:
                     print('OK')
-                    print('='*40)
+                    print('='*35)
                     print('Publicação efetuada com sucesso!')
-
-
-
-
 
