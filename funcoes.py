@@ -7,12 +7,13 @@ from random import uniform
 import os
 
 
-def iniciar_driver():
+def iniciar_driver(headless=False):
     chrome_options = Options()
     # pega o diretório independente do nome de usuário.
     user_data_dir = os.path.join(os.environ['LOCALAPPDATA'], 'Google', 'Chrome', 'User Data')
-    arguments = ['--lang=pt-BR', 'window-size=1300,1000',
-                 f'--user-data-dir={user_data_dir}', '--headless=new']
+    arguments = ['--lang=pt-BR', 'window-size=1300,1000', f'--user-data-dir={user_data_dir}']
+    if headless:
+        arguments.append('--headless=new')
     for argument in arguments:
         chrome_options.add_argument(argument)
 
@@ -38,7 +39,7 @@ def iniciar_driver():
 
 def digitar_devagar(campo, msg):
     for letra in msg:
-        espera_aleatoria(0.01, 0.5 / 100)
+        espera_aleatoria(0.1, 5 / 30)
         campo.send_keys(letra)
 
 
