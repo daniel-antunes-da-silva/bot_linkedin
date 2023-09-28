@@ -25,7 +25,7 @@ def iniciar_driver(headless=False):
     driver = webdriver.Chrome(options=chrome_options)
     wait = WebDriverWait(
         driver,
-        20,
+        15,
         poll_frequency=1,  # frequencia q vai tentar fazer algo
         ignored_exceptions=[
             NoSuchElementException,
@@ -43,7 +43,7 @@ def digitar_devagar(campo, msg):
         campo.send_keys(letra)
 
 
-def espera_aleatoria(inicio=2.5, fim=5.5):
+def espera_aleatoria(inicio=1.5, fim=3.0):
     sleep(uniform(inicio, fim))
 
 
