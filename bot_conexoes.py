@@ -4,28 +4,6 @@ from selenium.webdriver.common.keys import Keys
 from random import choice
 from funcoes import *
 
-
-def encontrar_botoes_conectar():
-    global wait
-    try:
-        btns_conectar = wait.until(expected_conditions.visibility_of_all_elements_located((
-            By.XPATH, '//button//span[text()="Conectar"]')))
-    except:
-        return False
-    else:
-        return btns_conectar
-
-
-def encontrar_botao_avancar():
-    global driver
-    try:
-        btn_avancar = driver.find_element(By.XPATH, '//button//span[text()="Avançar"]')
-    except:
-        return False
-    else:
-        return btn_avancar
-
-
 pesquisa = 'fisioterapeuta'
 
 # Entrando no site
@@ -55,13 +33,14 @@ botao_avancar = None
 while True:
     espera_aleatoria()
     while True:
-        botoes_conectar = encontrar_botoes_conectar()
+        botoes_conectar = wait.until(expected_conditions.visibility_of_all_elements_located((
+            By.XPATH, '//button//span[text()="Conectar"]')))
 
         # Verificando... Caso não tenha botão conectar, desce até o final da página e clica no botão avançar...
         if not botoes_conectar:
             driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
             espera_aleatoria()
-            botao_avancar = encontrar_botao_avancar()
+            botao_avancar = driver.find_element(By.XPATH, '//button//span[text()="Avançar"]')
 
             # Quando não tiver mais o botão avançar, interrompe o break
             if not botao_avancar:
