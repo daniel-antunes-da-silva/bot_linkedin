@@ -16,7 +16,8 @@ def iniciar_driver(headless=False):
         arguments.append('--headless=new')
     for argument in arguments:
         chrome_options.add_argument(argument)
-
+    chrome_options.add_experimental_option("useAutomationExtension", False)
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     chrome_options.add_experimental_option('prefs', {
         'download.prompt_for_download': False,
         'profile.default_content_setting_values.notifications': 2,

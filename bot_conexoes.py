@@ -4,13 +4,15 @@ from selenium.webdriver.common.keys import Keys
 from random import choice
 from funcoes import *
 
-pesquisa = 'fisioterapeuta'
+pesquisa = 'farmacêutico'
 
+print('Entrando no site')
 # Entrando no site
-wait, driver = iniciar_driver()  # Aceita argumento: headless=True
+wait, driver = iniciar_driver(headless=False)  # Aceita argumento: headless=True
 driver.get('https://www.linkedin.com/feed/')
 espera_aleatoria()
 
+print('Pesquisando')
 # Pesquisando
 campo_pesquisar = wait.until(expected_conditions.visibility_of_element_located((
     By.XPATH, '//input[@type="text"]')))
@@ -21,38 +23,42 @@ digitar_devagar(campo_pesquisar, pesquisa)
 campo_pesquisar.send_keys(Keys.ENTER)
 espera_aleatoria()
 
+print('Clicando no botão pessoas')
 # Clicando no botão pessoas
 botao_pessoas = wait.until(expected_conditions.visibility_of_all_elements_located((
     By.XPATH, '//button[text()="Pessoas"]')))
 espera_aleatoria()
 botao_pessoas[0].click()
 espera_aleatoria()
-
-botao_avancar = None
+driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+espera_aleatoria(0.5, 1.0)
+botao_avancar = driver.find_element(By.XPATH, '//button//span[text()="Avançar"]')
+espera_aleatoria(0.5, 1.0)
+driver.execute_script('window.scrollTo(0, 0)')
 
 while True:
     espera_aleatoria()
     while True:
-        botoes_conectar = wait.until(expected_conditions.visibility_of_all_elements_located((
-            By.XPATH, '//button//span[text()="Conectar"]')))
-
-        # Verificando... Caso não tenha botão conectar, desce até o final da página e clica no botão avançar...
+        print('Verificando botões conectar')
+        try:
+            botoes_conectar = wait.until(expected_conditions.visibility_of_all_elements_located((
+                By.XPATH, '//button//span[text()="Conectar"]')))
+        except:
+            botoes_conectar = False
         if not botoes_conectar:
             driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
             espera_aleatoria()
             botao_avancar = driver.find_element(By.XPATH, '//button//span[text()="Avançar"]')
-
-            # Quando não tiver mais o botão avançar, interrompe o break
-            if not botao_avancar:
-                break
             espera_aleatoria()
             driver.execute_script('arguments[0].click()', botao_avancar)
-            espera_aleatoria()
         else:
+            break
+        if not botao_avancar:
             break
 
     # Quando não tiver mais o botão avançar, interrompe o break
     if not botao_avancar:
+        print('Interrompendo o loop por não haver botão avançar 2')
         break
 
     # Adicionando notas em cada pessoa com botão disponível
@@ -70,12 +76,9 @@ while True:
         texto = texto_com_nome.text
         texto = texto.split()
         nome = texto[1]
-        mensagens = [f'Olá {nome}, gostaria de adicionar você à minha rede de contatos no LinkedIn. Estou sempre em busca '
-                     f'de ampliar minha rede profissional e acredito que podemos trocar conhecimentos e experiências. '
-                     f'Aguardo sua conexão!',
-                     f'Oi {nome}, estou interessado em expandir minha rede profissional e acredito que poderíamos '
-                     f'beneficiar um ao outro com nossa conexão no LinkedIn. Vamos nos conectar e compartilhar '
-                     f'conhecimentos e experiências? Fico aguardando sua aceitação!']
+        mensagens = [f'Olá, gostaria de adicionar você à minha rede de contatos no LinkedIn.',
+                     f'Oi, estou interessado em expandir minha rede profissional e acredito que poderíamos '
+                     f'beneficiar um ao outro com nossa conexão no LinkedIn.']
         campo_notas = wait.until(expected_conditions.visibility_of_element_located((
             By.ID, 'custom-message')))
         campo_notas.send_keys(choice(mensagens))
