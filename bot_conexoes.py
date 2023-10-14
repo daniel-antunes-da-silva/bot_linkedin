@@ -1,7 +1,6 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from random import choice
 from funcoes import *
 
 
@@ -34,9 +33,9 @@ def bot_conexoes(profissao, mensagem=''):
     botao_pessoas[0].click()
     espera_aleatoria()
     driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
-    espera_aleatoria(0.5, 1.0)
+    espera_aleatoria(0.6, 1.2)
     botao_avancar = driver.find_element(By.XPATH, '//button//span[text()="Avançar"]')
-    espera_aleatoria(0.5, 1.0)
+    espera_aleatoria(0.6, 1.2)
     driver.execute_script('window.scrollTo(0, 0)')
 
     while True:
