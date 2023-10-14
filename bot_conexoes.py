@@ -98,5 +98,4 @@ def bot_conexoes(profissao, mensagem=''):
             espera_aleatoria()
             print('Conexão adicionada com sucesso')
 
-    input('Aperte ENTER para encerrar.')
     driver.close()
