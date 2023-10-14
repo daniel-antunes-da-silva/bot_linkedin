@@ -1,6 +1,9 @@
-def janela_principal():
-    import PySimpleGUI as sg
+import PySimpleGUI as sg
+from threading import Thread
+from bot_conexoes import bot_conexoes
+from bot_postagem import bot_postagem
 
+def janela_principal():
     sg.theme('Reddit')
 
     layout = [
@@ -24,31 +27,15 @@ def janela_principal():
         if event == 'Automação de conexões':
             window.close()
             janela_conexao()
-        '''
-        if event == 'Abrir Janela 2':
-            # Defina o layout da Janela 2
-            layout2 = [
-                [sg.Text('Janela 2')],
-                [sg.Button('Fechar Janela 2')]
-            ]
-            # Defina o tamanho da Janela 2
-            window_size2 = (350, 180)
-            # Crie a Janela 2
-            window2 = sg.Window('Janela 2', layout2, size=window_size2)
-            # Loop da Janela 2
-            while True:
-                event2, values2 = window2.read()
-                if event2 == sg.WIN_CLOSED or event2 == 'Fechar Janela 2':
-                    break
-            window2.close()'''
+
+        if event == 'Automação de publicação':
+            bot_postagem()
 
     window.close()
 
 
 def janela_conexao():
-    import PySimpleGUI as sg
-    from threading import Thread
-    from bot_conexoes import bot_conexoes
+
     sg.theme('Reddit')
 
     layout = [
@@ -73,12 +60,12 @@ def janela_conexao():
             window.close()
             janela_principal()
         elif event == 'botao_iniciar':
-
             profissao = values['profissao']
             mensagem = values['mensagem']
 
             thread_bot_linkedin = Thread(target=bot_conexoes, args=(profissao, mensagem), daemon=True)
             thread_bot_linkedin.start()
+
             if event == sg.WIN_CLOSED:
                 window.close()
                 break
@@ -86,6 +73,7 @@ def janela_conexao():
             window['profissao'].update(disabled=True)
             window['mensagem'].update(disabled=True)
             window['botao_iniciar'].update(disabled=True)
+            window['botao_voltar'].update(disabled=True)
 
 
 if __name__ == '__main__':
