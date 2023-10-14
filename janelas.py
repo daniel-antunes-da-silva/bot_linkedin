@@ -3,6 +3,7 @@ from threading import Thread
 from bot_conexoes import bot_conexoes
 from bot_postagem import bot_postagem
 
+
 def janela_principal():
     sg.theme('Reddit')
 
@@ -18,7 +19,7 @@ def janela_principal():
 
     window_size = (400, 200)
 
-    window = sg.Window('Escolha', layout, size=window_size)
+    window = sg.Window('Bots LinkedIn', layout, size=window_size)
 
     while True:
         event, values = window.read()
@@ -29,7 +30,7 @@ def janela_principal():
             janela_conexao()
 
         if event == 'Automação de publicação':
-            bot_postagem()
+            janela_postagem()
 
     window.close()
 
@@ -50,7 +51,7 @@ def janela_conexao():
 
     ]
 
-    window = sg.Window('Bot LinkedIn', layout)
+    window = sg.Window('Bot Conexões', layout)
 
     while True:
         event, values = window.read()
@@ -73,6 +74,37 @@ def janela_conexao():
             window['profissao'].update(disabled=True)
             window['mensagem'].update(disabled=True)
             window['botao_iniciar'].update(disabled=True)
+            window['botao_voltar'].update(disabled=True)
+
+
+def janela_postagem():
+    sg.theme('Reddit')
+
+    layout = [
+        [sg.Text('Histórico:')],
+        [sg.Output(size=(43, 12))],
+        [sg.Text('')],
+        [sg.Button('Iniciar', key='botao_iniciar', size=(20, 1)),
+         sg.Button('Voltar', key='botao_voltar', size=(20, 1))]
+    ]
+
+    window_size = (400, 300)
+
+    window = sg.Window('Bot Postagens', layout, size=window_size)
+
+    while True:
+        event, values = window.read()
+        if event == sg.WIN_CLOSED:
+            break
+        elif event == 'botao_voltar':
+            window.close()
+            janela_principal()
+        elif event == 'botao_iniciar':
+
+            thread_bot_postagem = Thread(target=bot_postagem, daemon=True)
+            thread_bot_postagem.start()
+
+            window['botao_iniciar'].update(disabled=False)
             window['botao_voltar'].update(disabled=True)
 
 
