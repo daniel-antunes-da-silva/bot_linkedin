@@ -89,7 +89,7 @@ def bot_postagem():
                                       'artdeco-button--2 artdeco-button--primary ember-view"]')))
                         espera_aleatoria()
                         botao_publicar.click()
-                        espera_aleatoria()
+                        espera_aleatoria(5, 10)
                         driver.close()
                     except:
                         print('Ocorreu algum problema na publicação do post.')
