@@ -17,7 +17,7 @@ def bot_postagem():
         print('OK')
         try:
             print('Navegando até o site...', end=' ')
-            wait, driver = iniciar_driver(headless=False)
+            wait, driver = iniciar_driver(headless=True)
             driver.get('https://www.linkedin.com/')
             espera_aleatoria(2.0, 4.5)
         except:
