@@ -74,8 +74,8 @@ def bot_postagem():
                     campo_texto = wait.until(expected_conditions.visibility_of_element_located((
                         By.XPATH, '//div[@aria-label="Editor de texto para criação de conteúdo"]')))
                     espera_aleatoria()
-                    # digitar_devagar(campo_texto, texto)
-                    campo_texto.send_keys(texto)
+                    digitar_devagar(campo_texto, texto)
+                    # campo_texto.send_keys(texto)
                     espera_aleatoria()
                 except:
                     print('Ocorreu algum problema na publicação do texto.')
