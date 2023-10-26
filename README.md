@@ -5,12 +5,47 @@ O repositório foi atualizado, trazendo duas funções e interface gráfica com 
 Resumo do que foi utilizado:
 - Python
 - PySimpleGUI
-- Selenium WebDriver
+- Selenium
 - Threads (threading)
 - Tkinter (filedialog para selecionar arquivos no bot de postagem)
 - Random
 - os
 - Funções e modularização
+
+# Como usar?
+
+Primeiramente, você precisa ter o python instalado no seu computador. Caso não tenha, faça download no site oficial:
+
+[Download Python](https://www.python.org/downloads/)
+
+
+Com o Python instalado, faça download ou clone esse repositório (precisa ter o git configurado) em algum local do seu computador com o seguinte comando no terminal:
+
+```
+git clone https://github.com/daniel-antunes-da-silva/bot_linkedin.git
+```
+
+Abra o projeto no seu editor de código, e instale as dependências necessárias, que estão no arquivo requirements.txt.
+
+Sugiro criar um ambiente virtual para o projeto, embora não seja obrigatório. Para isso, é necessário abrir o terminal dentro do projeto. Veja como criar um ambiente virtual no Windows (rode uma linha de código por vez):
+
+```
+pip install virtualenv
+virtualenv venv
+venv\Scripts\activate
+```
+
+Instalando as dependências:
+
+```
+pip install -r requirements.txt
+```
+
+Pronto, agora que já tem o projeto e as dependências na sua máquina, você pode executar o programa rodando o arquivo _**"janelas.py"**_.
+
+# Como funciona?
+
+Ao rodar o programa, você verá a seguinte tela.
 
 
 # Tela principal
@@ -19,11 +54,13 @@ Nessa tela, o usuário escolhe a automação (bot) a ser executada.
 
 ![tela_principal](https://github.com/daniel-antunes-da-silva/bot_linkedin/assets/132831685/ab114cbe-29b3-48f4-8c3c-c070a533408c)
 
-Após a escolha, o bot iniciará as ações automáticas no computador, e isso inclui abrir o navegador **Google Chrome** e executar ações automáticas dentro dele.
-
+Após a escolha, o bot iniciará as ações automáticas no computador, e isso inclui abrir o navegador **Google Chrome** e executar ações dentro dele.
 
 
 # Bot de postagens
+
+Assim que aparecer a tela, você precisa clicar em iniciar. Com isso, o programa vai pedir para que você selecione arquivos. O arquivo .txt é obrigatório, sendo que o de mídia você pode fechar a janela caso não queira.
+
 
 Postagem automática de textos (carregar arquivo .txt) + mídia no LinkedIn, com pausas estratégicas para melhor carregamento dos elementos e humanização.
 
@@ -36,6 +73,7 @@ O arquivo de TEXTO precisa ser do tipo .txt.
 O programa vai informar ao usuário as etapas que estão aconteecendo, além de informar a etapa que possa acontecer algum erro... Tudo isso é exibido na seção de histórico da interface gráfica:
 
 ![historico_bot_postagem](https://github.com/daniel-antunes-da-silva/bot_linkedin/assets/132831685/abc2d7ce-6613-4635-9c55-d66de1c9f7b8)
+
 Obs: essas acima são as etapas que ocorrem caso o bot funcione corretamente.
 
 
@@ -47,7 +85,7 @@ Caso queira, é possível incluir uma mensagem, e ela deve ser iniciada dessa fo
 
 ![bot_conexoes](https://github.com/daniel-antunes-da-silva/bot_linkedin/assets/132831685/130a8bee-7c34-43f6-9038-c99f33775f03)
 
-Caso não queira incluir nenhuma mensagem, ele funcionará apenas enviando as conexões.
+**Caso não queira incluir nenhuma mensagem, ele funcionará apenas enviando as conexões.**
 
 Nesse bot, também é exibido um histórico do que está acontecendo.
 
