@@ -93,11 +93,13 @@ Nesse bot, também é exibido um histórico do que está acontecendo.
 
 
 **_Importante:_**
+
 O bot muda de página quando não houver mais botões de "conectar" disponíveis, sendo assim, o bot executará quase que infinitamente (até que o número de páginas acabem), sendo necessário ser encerrado pelo usuário.
 
-
-
-# Observações:
-* O post e a mídia escolhida serão publicados no LinkedIn, no perfil previamente logado no google chrome.
-* É necessário que o google chrome não esteja sendo executado durante o uso da automação. Feche-o antes de executar a automação.
-* Por ser uma automação web baseada no código fonte do site e utilizando XPATHs, pode ser que em algum momento a automação pare de funcionar caso o site mude.
+  # Observações:
+  * O post e a mídia escolhida serão publicados no LinkedIn, no perfil previamente logado no google chrome.
+  * É necessário que o google chrome não esteja sendo executado durante o uso da automação. Feche-o antes de executar a automação.
+  * Por ser uma automação web baseada no código fonte do site e utilizando XPATHs, pode ser que em algum momento a automação pare de funcionar caso o site mude.
+  * Evite rodar por muito tempo a automação de conexões e com as mesmas mensagens, para evitar possíveis bloqueios.
+  * Mesmo fazendo o passo acima, não posso garantir que o bot nunca será detectado pelo Linkedin. O bot foi construído com pausas entre as ações para evitar que se pareça com um robô, e parecer mais com um humano. Além disso, as pausas são aleatórias, para          evitar padronização. No entanto, redes sociais são sites sensívies, que podem identificar atividade suspeita em algum momento, por isso, o uso é de sua total responsabilidade e risco.
+  * O intuito da criação do bot foi apenas para colocar em prática conhecimentos adquiridos, como forma de automatizar tarefas repetitivas.
