@@ -75,15 +75,15 @@ def bot_conexoes(profissao, mensagem=''):
                 espera_aleatoria()
                 texto_com_nome = wait.until(expected_conditions.visibility_of_element_located((
                     By.ID, 'send-invite-modal')))
-                texto = texto_com_nome.text
+                '''texto = texto_com_nome.text
                 texto = texto.split()
                 nome = texto[1]
-                mensagem_personalizada = f'Olá {nome} {mensagem}'
+                mensagem_personalizada = f'Olá {nome} {mensagem}'''
 
                 campo_notas = wait.until(expected_conditions.visibility_of_element_located((
                     By.ID, 'custom-message')))
                 # campo_notas.send_keys(mensagem_personalizada)
-                digitar_devagar(campo_notas, mensagem_personalizada)
+                digitar_devagar(campo_notas, mensagem)
 
                 enviar_conexao = wait.until(expected_conditions.visibility_of_element_located((
                     By.XPATH, '//button[@aria-label="Enviar agora"]')))
