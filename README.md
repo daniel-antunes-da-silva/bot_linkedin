@@ -6,8 +6,6 @@ Além disso, é POSSÍVEL que o programa esteja DESATUALIZADO atualmente, então
 
 # Bots de LinkedIn - versão 2.0 
 
-O repositório foi atualizado, trazendo duas funções e interface gráfica com PySimpleGUI.
-
 Resumo do que foi utilizado:
 - Python
 - PySimpleGUI
