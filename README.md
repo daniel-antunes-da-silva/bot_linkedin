@@ -1,3 +1,9 @@
+# Leia com atenção esta parte
+
+Foi retirado a funcionalidade de mensagem personalizada com o nome da pessoa.
+
+Além disso, é POSSÍVEL que o programa esteja DESATUALIZADO atualmente, então leve isso em consideração caso queira fazer um Fork, mas de qualquer forma, o código presente foi a base que utilizei para que o programa funcionasse da forma desejada.
+
 # Bots de LinkedIn - versão 2.0 
 
 O repositório foi atualizado, trazendo duas funções e interface gráfica com PySimpleGUI.
